@@ -1,4 +1,5 @@
 #This script checks the ip writes it into a file and if there's a change it updates the A entry on yay.com
+#Rechecks every minute
 import time
 import requests
 import subprocess

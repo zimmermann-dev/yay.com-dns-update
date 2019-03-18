@@ -15,3 +15,5 @@ sudo apt install curl tail python3 python3-pip
 After that run
 
 sudo pip install requests
+
+Not finished

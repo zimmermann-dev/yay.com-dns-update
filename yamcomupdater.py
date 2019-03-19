@@ -8,6 +8,7 @@ import os
 
 def update():
     auth_header = {
+        #You can get your information from https://www.yay.com/account/member/api/
         u'X-Auth-Reseller': u'XAUTHRESELLER',
         u'X-Auth-User': u'admin',
         u'X-Auth-Password': u'XAUTHPASSWORD'
@@ -32,7 +33,7 @@ def update():
 
     print r.status_code
     print r.content
-
+#check if IP updates
 def check():
     global wanip
     wanip = subprocess.check_output('curl -s https://api.ipify.org', shell=True)
@@ -52,5 +53,6 @@ def check():
 check()
 
 while True:
+    #runs every 60seconds
     time.sleep(60)
     check()

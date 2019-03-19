@@ -37,10 +37,11 @@ def check():
     global wanip
     wanip = subprocess.check_output('curl -s https://api.ipify.org', shell=True)
     wanip = wanip.strip()
-    tailip = subprocess.check_output('tail -n 1 /opt/rawip.log', shell=True)
-    tailip = tailip.strip()
     home = os.environ['HOME'] + "/ip.log"
     command = "tail -n 1 " + home
+    tailip = subprocess.check_output(command, shell=True)
+    tailip = tailip.strip()
+    
     if tailip == wanip:
         print(tailip, "=", wanip)
     else:

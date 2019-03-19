@@ -4,6 +4,7 @@ import time
 import requests
 import subprocess
 import json
+import os
 
 def update():
     auth_header = {
@@ -38,11 +39,13 @@ def check():
     wanip = wanip.strip()
     tailip = subprocess.check_output('tail -n 1 /opt/rawip.log', shell=True)
     tailip = tailip.strip()
+    home = os.environ['HOME'] + "/ip.log"
+    command = "tail -n 1 " + home
     if tailip == wanip:
         print(tailip, "=", wanip)
     else:
-        print("updating ip...")
-        f = open("/opt/rawip.log", "w")
+        print("Updating IP from " + tailip + " to " + wanip)
+        f = open(home, "w")
         f.write(wanip)
         update()
 check()
